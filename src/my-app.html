@@ -1,11 +1,17 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
-
+<link rel="import" href="../bower_components/aqa-form/aqa-input.html">
+<!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css" > -->
 <dom-module id="my-app">
     <template>
-        <style>
-          
-        </style>
-        my-app
+        <div id="form">
+            <aqa-input label="test" type="text" required></aqa-input>
+        </div>
+
+        <!-- <b>note</b>
+        <ul>
+            <li>create element</li>
+            <li>import element</li>
+        </ul> -->
     </template>
 
     <script>
@@ -18,8 +24,26 @@
 
             static get properties() {
                 return {
-                    
+                    elements:{
+                        type:Array,
+                        value:[
+                            {
+                                name:'input',
+                                required:true,
+                                pattern:'',
+                                path:''
+                            }
+                        ]
+                    }
                 };
+            }
+            ready(){
+                super.ready();
+                var element = document.createElement('aqa-input')
+                element.setAttribute('label','test')
+                element.setAttribute('required',"")
+                element.setAttribute('type','password')
+                this.$.form.appendChild(element);
             }
 
         }
